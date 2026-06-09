@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>桃園區米蘭皇家翻修案 - 水電衛浴工程最新需求書</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Microsoft JhengHei", sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 pb-12 antialiased">
+
+    <!-- Header Section -->
+    <header class="bg-gradient-to-r from-blue-600 to-indigo-700 text-white shadow-md sticky top-0 z-40">
+        <div class="max-w-md mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <!-- Toggle Off-Canvas Menu Button -->
+                <button onclick="openSidebar()" class="p-2 -ml-2 rounded-lg hover:bg-white/10 transition-colors" title="開啟選單">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+                <div>
+                    <span class="text-[10px] font-semibold bg-blue-500 bg-opacity-40 px-2.5 py-0.5 rounded-full uppercase tracking-wider">桃園區米蘭皇家翻修案</span>
+                    <h1 class="text-lg font-bold">水電衛浴更新需求書</h1>
+                </div>
+            </div>
+            <!-- Quick Share Action Button -->
+            <button onclick="copyShareText()" class="bg-white/10 hover:bg-white/20 p-2.5 rounded-lg transition-colors flex items-center justify-center" title="複製大綱給師傅">
+                <i data-lucide="share-2" class="w-5 h-5"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Off-Canvas Sidebar Overlay -->
+    <div id="sidebar-overlay" onclick="closeSidebar()" class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-50 opacity-0 pointer-events-none transition-opacity duration-300"></div>
+
+    <!-- Off-Canvas Sidebar Menu -->
+    <aside id="sidebar-menu" class="fixed inset-y-0 left-0 w-72 bg-white shadow-2xl z-50 transform -translate-x-full transition-transform duration-300 ease-in-out flex flex-col">
+        <div class="p-5 border-b border-slate-100 flex justify-between items-center bg-slate-50">
+            <div class="flex items-center gap-2">
+                <div class="p-1.5 bg-blue-600 text-white rounded-lg">
+                    <i data-lucide="wrench" class="w-5 h-5"></i>
+                </div>
+                <div>
+                    <span class="font-bold text-slate-950 text-sm block">桃園區米蘭皇家翻修案</span>
+                    <span class="text-xs text-slate-500 block">目錄導覽</span>
+                </div>
+            </div>
+            <button onclick="closeSidebar()" class="p-1.5 rounded-lg hover:bg-slate-200 text-slate-500 transition-colors">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+        </div>
+        <nav class="flex-1 p-4 space-y-1 overflow-y-auto">
+            <button onclick="navigateToSection('power')" class="w-full flex items-center gap-3 px-4 py-3 text-sm font-medium text-slate-700 hover:bg-slate-100 rounded-xl transition-colors">
+                <i data-lucide="zap" class="w-5 h-5 text-blue-500"></i>
+                一、 電力、專迴與弱電
+            </button>
+            <button onclick="navigateToSection('switches')" class="w-full flex items-center gap-3 px-4 py-3 text-sm font-medium text-slate-700 hover:bg-slate-100 rounded-xl transition-colors">
+                <i data-lucide="toggle-right" class="w-5 h-5 text-emerald-500"></i>
+                二、 開關與插座配置
+            </button>
+            <button onclick="navigateToSection('bathroom')" class="w-full flex items-center gap-3 px-4 py-3 text-sm font-medium text-slate-700 hover:bg-slate-100 rounded-xl transition-colors">
+                <i data-lucide="droplet" class="w-5 h-5 text-indigo-500"></i>
+                三、 衛浴天花板與防潮
+            </button>
+            <button onclick="navigateToSection('devices')" class="w-full flex items-center gap-3 px-4 py-3 text-sm font-medium text-slate-700 hover:bg-slate-100 rounded-xl transition-colors">
+                <i data-lucide="shopping-cart" class="w-5 h-5 text-amber-500"></i>
+                四、 設備採購與安裝報價
+            </button>
+        </nav>
+        <div class="p-4 border-t border-slate-100 bg-slate-50 text-center">
+            <p class="text-xs text-slate-400">米蘭皇家翻修案 • 手機版水電需求書</p>
+        </div>
+    </aside>
+
+    <!-- Floating Toast Notification -->
+    <div id="toast" class="fixed top-20 left-1/2 -translate-x-1/2 bg-slate-900 text-white px-4 py-2.5 rounded-full shadow-lg text-sm font-medium transition-opacity duration-300 opacity-0 pointer-events-none z-50 flex items-center gap-2">
+        <i data-lucide="check-circle-2" class="w-4 h-4 text-green-400"></i>
+        <span id="toast-msg">已複製文字</span>
+    </div>
+
+    <!-- Main Container -->
+    <main class="max-w-md mx-auto px-4 py-6 space-y-6">
+
+        <!-- Welcome & Brief -->
+        <section class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100">
+            <div class="flex items-start gap-3">
+                <div class="p-2.5 bg-blue-50 text-blue-600 rounded-xl">
+                    <i data-lucide="home" class="w-6 h-6"></i>
+                </div>
+                <div>
+                    <h2 class="text-base font-bold text-slate-900">桃園區米蘭皇家翻修案</h2>
+                    <p class="text-sm text-slate-600 mt-1 leading-relaxed">
+                        師傅您好，以下是我們整理本案最新的水電與衛浴異動需求。請依此項目進行評估與報價，非常感謝您的協助！
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 1: 電力與專迴 -->
+        <section id="power" class="scroll-mt-20 space-y-4">
+            <div class="flex items-center gap-2">
+                <span class="w-1.5 h-6 bg-blue-600 rounded-full"></span>
+                <h3 class="text-lg font-bold text-slate-900">一、 電力、專迴與弱電</h3>
+            </div>
+
+            <!-- Card 1 -->
+            <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 space-y-4">
+                <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+                    <span class="font-bold text-slate-800 flex items-center gap-2">
+                        <i data-lucide="refresh-cw" class="w-5 h-5 text-blue-500"></i>全室電線與電箱
+                    </span>
+                    <span class="text-xs bg-amber-50 text-amber-700 border border-amber-200 px-2 py-0.5 rounded-md font-medium">全換新</span>
+                </div>
+                <ul class="space-y-3 text-sm text-slate-600">
+                    <li class="flex items-start gap-2">
+                        <i data-lucide="check" class="w-4 h-4 text-emerald-500 mt-1 shrink-0"></i>
+                        <span><strong>全室重新抽線</strong>：全室更新為 <span class="text-blue-600 font-bold">2.0mm 單心線</span>（指定使用大亞、宏泰、大山等大廠 1~2 年內新線，禁用庫存舊線）。</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <i data-lucide="check" class="w-4 h-4 text-emerald-500 mt-1 shrink-0"></i>
+                        <span><strong>總電箱更新</strong>：更換全新箱體，無熔絲開關（NFB）與漏電斷路器指定使用<strong>「士林電機」</strong>。</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <i data-lucide="check" class="w-4 h-4 text-emerald-500 mt-1 shrink-0"></i>
+                        <span><strong>大門口預留線路</strong>：總電箱需預留大門口一鍵總控開關（一鍵開關）使用之控制線路。</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 space-y-4">
+                <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+                    <span class="font-bold text-slate-800 flex items-center gap-2">
+                        <i data-lucide="shield-alert" class="w-5 h-5 text-red-500"></i>安全專用迴路
+                    </span>
+                    <span class="text-xs bg-red-50 text-red-700 border border-red-200 px-2 py-0.5 rounded-md font-medium">需配漏電斷路器</span>
+                </div>
+                <div class="space-y-4">
+                    <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-100">
+                        <span class="text-xs font-bold text-slate-500 uppercase tracking-wider block mb-1">廚房工作區</span>
+                        <ul class="space-y-1.5 text-sm text-slate-600">
+                            <li class="flex items-center gap-1.5">
+                                <span class="w-1.5 h-1.5 bg-blue-500 rounded-full"></span>
+                                <span>新增一組 <strong class="text-slate-800">5.5mm² 專用迴路</strong>（工作區檯面用）</span>
+                            </li>
+                            <li class="flex items-start gap-1.5">
+                                <span class="w-1.5 h-1.5 bg-blue-500 rounded-full mt-2 shrink-0"></span>
+                                <span>另外獨立規劃 <strong class="text-blue-600">專用迴路 兩組</strong>（不指定電器，作備用電量使用）</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-100">
+                        <span class="text-xs font-bold text-slate-500 uppercase tracking-wider block mb-1">浴室區域（共2間）</span>
+                        <ul class="space-y-1.5 text-sm text-slate-600">
+                            <li class="flex items-start gap-1.5">
+                                <span class="w-1.5 h-1.5 bg-blue-500 rounded-full mt-2 shrink-0"></span>
+                                <span>兩間浴室各規劃一台三合一暖風機，每台需單獨配置拉一組 <strong class="text-blue-600">5.5mm² 專用迴路</strong>（共 2 條獨立迴路）。</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 space-y-3">
+                <span class="font-bold text-slate-800 flex items-center gap-2 border-b border-slate-100 pb-3">
+                    <i data-lucide="wifi" class="w-5 h-5 text-indigo-500"></i>弱電工程
+                </span>
+                <p class="text-sm text-slate-600 leading-relaxed">
+                    <strong>客廳網路線抽換</strong>：客廳舊有網路線全部重新抽換，升級為 <span class="text-indigo-600 font-bold">Cat.6</span> 規格線材。
+                </p>
+            </div>
+        </section>
+
+        <!-- SECTION 2: 開關與插座 -->
+        <section id="switches" class="scroll-mt-20 space-y-4">
+            <div class="flex items-center gap-2">
+                <span class="w-1.5 h-6 bg-blue-600 rounded-full"></span>
+                <h3 class="text-lg font-bold text-slate-900">二、 開關與插座配置</h3>
+            </div>
+
+            <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 space-y-4">
+                <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+                    <span class="font-bold text-slate-800 flex items-center gap-2">
+                        <i data-lucide="layout" class="w-5 h-5 text-emerald-500"></i>開關插座異動（合計 37 組）
+                    </span>
+                    <span class="text-xs text-slate-500">冷氣專迴另計</span>
+                </div>
+
+                <!-- Metrics Grid -->
+                <div class="grid grid-cols-3 gap-2">
+                    <div class="bg-emerald-50 border border-emerald-100 p-3 rounded-xl text-center">
+                        <span class="text-xs text-emerald-700 font-semibold block">新增插座</span>
+                        <span class="text-xl font-extrabold text-emerald-600 block mt-1">25 <span class="text-xs font-normal">組</span></span>
+                    </div>
+                    <div class="bg-slate-50 border border-slate-100 p-3 rounded-xl text-center">
+                        <span class="text-xs text-slate-500 font-semibold block">沿用（留用）</span>
+                        <span class="text-xl font-extrabold text-slate-600 block mt-1">12 <span class="text-xs font-normal">組</span></span>
+                    </div>
+                    <div class="bg-red-50 border border-red-100 p-3 rounded-xl text-center">
+                        <span class="text-xs text-red-700 font-semibold block">廢除（棄用）</span>
+                        <span class="text-xl font-extrabold text-red-500 block mt-1">5 <span class="text-xs font-normal">組</span></span>
+                    </div>
+                </div>
+
+                <!-- Detail Notes -->
+                <div class="space-y-3 pt-2">
+                    <div class="flex items-start gap-2.5 bg-amber-50/50 border border-amber-100 p-3.5 rounded-xl text-sm text-slate-700">
+                        <i data-lucide="alert-triangle" class="w-5 h-5 text-amber-500 shrink-0 mt-0.5"></i>
+                        <div>
+                            <p class="font-bold text-amber-950">面板自備與分配說明：</p>
+                            <ul class="list-disc pl-4 mt-1 space-y-1 text-slate-600">
+                                <li><strong>開關面板</strong>：<span class="text-amber-800 font-semibold">全部統一由業主自備</span>。</li>
+                                <li><strong>插座面板</strong>：業主自備<span class="text-amber-800 font-semibold">部分</span>面板，未準備的部分現場再統一安裝<strong>「Panasonic 國際牌星光系列」</strong>。</li>
+                                <li><strong>放樣照片示意</strong>：屆時放樣時，業主會提供實地照片，並在照片上畫圈標記示意自備面板與星光面板的具體分配位置。</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-100 text-sm">
+                        <div class="flex items-center gap-1.5 font-bold text-slate-800 mb-1">
+                            <i data-lucide="door-open" class="w-4 h-4 text-blue-500"></i>
+                            <span>大門口一鍵總控（一鍵開關）</span>
+                        </div>
+                        <p class="text-slate-600">
+                            於大門口施作全室電燈「一鍵總控開關」，出門可直接關閉全室照明，面板由業主自備。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: 衛浴工程 -->
+        <section id="bathroom" class="scroll-mt-20 space-y-4">
+            <div class="flex items-center gap-2">
+                <span class="w-1.5 h-6 bg-blue-600 rounded-full"></span>
+                <h3 class="text-lg font-bold text-slate-900">三、 衛浴天花板與防潮（共 2 間）</h3>
+            </div>
+
+            <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 space-y-4">
+                <ul class="space-y-4 text-sm text-slate-600">
+                    <li class="flex gap-3">
+                        <div class="p-1.5 bg-blue-50 text-blue-600 rounded-lg shrink-0 h-8 w-8 flex items-center justify-center">
+                            <i data-lucide="layers" class="w-4 h-4"></i>
+                        </div>
+                        <div>
+                            <strong class="text-slate-800 block">防潮塑鋁板天花板</strong>
+                            兩間浴室皆施作塑鋁板天花板，且<span class="text-blue-600 font-bold">每間務必預留維修孔</span>。
+                        </div>
+                    </li>
+                    <li class="flex gap-3">
+                        <div class="p-1.5 bg-blue-50 text-blue-600 rounded-lg shrink-0 h-8 w-8 flex items-center justify-center">
+                            <i data-lucide="wind" class="w-4 h-4"></i>
+                        </div>
+                        <div>
+                            <strong class="text-slate-800 block">暖風機排氣接管道間（當層排氣）</strong>
+                            排氣管請確實拉到大樓管道間，<span class="text-red-500 font-bold">絕不可直接排在天花板裡面</span>。
+                        </div>
+                    </li>
+                    <li class="flex gap-3">
+                        <div class="p-1.5 bg-blue-50 text-blue-600 rounded-lg shrink-0 h-8 w-8 flex items-center justify-center">
+                            <i data-lucide="lightbulb" class="w-4 h-4"></i>
+                        </div>
+                        <div>
+                            <strong class="text-slate-800 block">浴室照明（崁燈連工帶料）</strong>
+                            每間預計新增崁燈 2 顆。請師傅協助現場評估一間 2 顆的亮度是否足夠，並連工帶料進行報價。
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- SECTION 4: 設備與安裝 -->
+        <section id="devices" class="scroll-mt-20 space-y-4">
+            <div class="flex items-center gap-2">
+                <span class="w-1.5 h-6 bg-blue-600 rounded-full"></span>
+                <h3 class="text-lg font-bold text-slate-900">四、 設備採購與安裝報價</h3>
+            </div>
+
+            <!-- Group A: 連工帶料 -->
+            <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 space-y-4">
+                <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+                    <span class="font-bold text-slate-800 flex items-center gap-2">
+                        <i data-lucide="package-plus" class="w-5 h-5 text-blue-500"></i>項目 A：請工班採購並報價
+                    </span>
+                    <span class="text-xs bg-blue-50 text-blue-700 px-2.5 py-0.5 rounded-full font-semibold">連工帶料</span>
+                </div>
+
+                <div class="space-y-4">
+                    <div class="border-l-2 border-slate-200 pl-3 py-1 space-y-1">
+                        <div class="flex items-center justify-between text-sm font-semibold text-slate-800">
+                            <span>1. 台達電三合一暖風機</span>
+                            <span class="text-blue-600">數量：2 台</span>
+                        </div>
+                        <p class="text-xs text-slate-500">兩間浴室各 1 台（專迴已拉好）。</p>
+                    </div>
+
+                    <div class="border-l-2 border-slate-200 pl-3 py-1 space-y-1">
+                        <div class="flex items-center justify-between text-sm font-semibold text-slate-800">
+                            <span>2. 馬桶 (請提供建議與報價二選一)</span>
+                            <span class="text-blue-600">數量：2 組</span>
+                        </div>
+                        <ul class="text-xs text-slate-500 space-y-1 mt-1 pl-4 list-decimal">
+                            <li><strong>一太 ITAI</strong>：ET-7009</li>
+                            <li><strong>HCG 和成</strong>：C4068MUT</li>
+                        </ul>
+                    </div>
+
+                    <div class="border-l-2 border-slate-200 pl-3 py-1 space-y-1">
+                        <div class="flex items-center justify-between text-sm font-semibold text-slate-800">
+                            <span>3. 壁掛式臉盆 (請提供建議與報價二選一)</span>
+                            <span class="text-blue-600">數量：2 組</span>
+                        </div>
+                        <ul class="text-xs text-slate-500 space-y-1 mt-1 pl-4 list-decimal">
+                            <li><strong>KOHLER</strong>：Modern Life (12 公升)</li>
+                            <li><strong>TOTO</strong>：LW250CGU (6.5 公升)</li>
+                        </ul>
+                    </div>
+
+                    <div class="border-l-2 border-slate-200 pl-3 py-1 space-y-1">
+                        <div class="flex items-center justify-between text-sm font-semibold text-slate-800">
+                            <span>4. 面盆龍頭 (請提供建議與報價二選一)</span>
+                            <span class="text-blue-600">數量：2 組</span>
+                        </div>
+                        <ul class="text-xs text-slate-500 space-y-1 mt-1 pl-4 list-decimal">
+                            <li><strong>KOHLER</strong>：K-30447T-4-CP (鉻色)</li>
+                            <li><strong>HCG 和成</strong>：LF2151</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Group B: 業主自備 -->
+            <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 space-y-4">
+                <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+                    <span class="font-bold text-slate-800 flex items-center gap-2">
+                        <i data-lucide="package-check" class="w-5 h-5 text-amber-500"></i>項目 B：業主自備請報安裝工資
+                    </span>
+                    <span class="text-xs bg-amber-50 text-amber-700 px-2.5 py-0.5 rounded-full font-semibold">純代工報價</span>
+                </div>
+                <p class="text-xs text-slate-500 -mt-2 bg-slate-50 p-2.5 rounded-lg border border-slate-100">
+                    💡 以下項目若師傅有合作或推薦的台灣現貨規格好款式，亦可主動提供「連工帶料」報價給我們參考。
+                </p>
+
+                <div class="space-y-4">
+                    <div class="border-l-2 border-amber-200 pl-3 py-1 space-y-1">
+                        <div class="flex items-center justify-between text-sm font-semibold text-slate-800">
+                            <span class="flex items-center gap-1">1. 淋浴花灑套組 <a href="https://e.tb.cn/h.RQ2JBlpoFb8WvWD?tk=otM2g2eWSkH" target="_blank" class="text-blue-500 inline-flex items-center gap-0.5 text-xs"><i data-lucide="external-link" class="w-3.5 h-3.5"></i>連結</a></span>
+                            <span class="text-amber-600">數量：2 組</span>
+                        </div>
+                        <p class="text-xs text-slate-500">自備「淘寶九牧自動除垢花灑」組。</p>
+                    </div>
+
+                    <div class="border-l-2 border-amber-200 pl-3 py-1 space-y-1">
+                        <div class="flex items-center justify-between text-sm font-semibold text-slate-800">
+                            <span class="flex items-center gap-1">2. 電熱毛巾架 <a href="https://pse.is/96nuef" target="_blank" class="text-blue-500 inline-flex items-center gap-0.5 text-xs"><i data-lucide="external-link" class="w-3.5 h-3.5"></i>連結</a></span>
+                            <span class="text-amber-600">數量：1 組</span>
+                        </div>
+                        <p class="text-xs text-slate-500">自備一般觸控款（需留意電壓 110V/美規插頭配電與固定方式）。</p>
+                    </div>
+
+                    <div class="border-l-2 border-amber-200 pl-3 py-1 space-y-1">
+                        <div class="flex items-center justify-between text-sm font-semibold text-slate-800">
+                            <span>3. 浴室除霧鏡</span>
+                            <span class="text-amber-600">數量：2 組</span>
+                        </div>
+                        <p class="text-xs text-slate-500">自備（款式規格待確認後告知）。</p>
+                    </div>
+
+                    <div class="border-l-2 border-amber-200 pl-3 py-1 space-y-1">
+                        <div class="flex items-center justify-between text-sm font-semibold text-slate-800">
+                            <span>4. 吊扇 (明線安裝)</span>
+                            <span class="text-amber-600">數量：2 組</span>
+                        </div>
+                        <p class="text-xs text-slate-500 font-bold text-slate-700">自備。預定於客廳、主臥各安裝1台，直接以「明線」方式處理。</p>
+                    </div>
+
+                    <div class="border-l-2 border-amber-200 pl-3 py-1 space-y-1">
+                        <div class="flex items-center justify-between text-sm font-semibold text-slate-800">
+                            <span>5. 全室吸頂燈</span>
+                            <span class="text-amber-600">數量：6 組</span>
+                        </div>
+                        <p class="text-xs text-slate-500">
+                            自備。分配區域：<strong class="text-slate-700">客廳、餐廳、主臥、次臥、書房、廚房各 1 組</strong>（款式待確認後提供）。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Quick JavaScript for Interaction -->
+    <script>
+        // Initialize Icons
+        lucide.createIcons();
+
+        // Sidebar Navigation Functions
+        function openSidebar() {
+            const sidebar = document.getElementById('sidebar-menu');
+            const overlay = document.getElementById('sidebar-overlay');
+            
+            sidebar.classList.remove('-translate-x-full');
+            overlay.classList.remove('opacity-0', 'pointer-events-none');
+            overlay.classList.add('opacity-100');
+        }
+
+        function closeSidebar() {
+            const sidebar = document.getElementById('sidebar-menu');
+            const overlay = document.getElementById('sidebar-overlay');
+            
+            sidebar.classList.add('-translate-x-full');
+            overlay.classList.remove('opacity-100');
+            overlay.classList.add('opacity-0', 'pointer-events-none');
+        }
+
+        function navigateToSection(id) {
+            closeSidebar();
+            
+            // Allow sliding animation to complete slightly before scrolling
+            setTimeout(() => {
+                const el = document.getElementById(id);
+                if (el) {
+                    const offset = 80; // Header height spacing
+                    const bodyRect = document.body.getBoundingClientRect().top;
+                    const elementRect = el.getBoundingClientRect().top;
+                    const elementPosition = elementRect - bodyRect;
+                    const offsetPosition = elementPosition - offset;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            }, 150);
+        }
+
+        // Copy Text for Fast Sharing
+        function copyShareText() {
+            const textToCopy = `【桃園區米蘭皇家翻修案 - 水電衛浴更新需求簡要】
+1. 電力：全室重新抽 2.0mm 單心線，大門口配一鍵開關。
+2. 專迴：廚房一組 5.5mm²、另外新增專迴兩組。雙衛浴三合一暖風機各配一組 5.5mm² 專迴。
+3. 弱電：客廳抽換 Cat.6 網路線。
+4. 開關插座：約 37 組。開關面板全部業主自備；部分插座面板業主自備（放樣示意），其餘用星光牌。
+5. 衛浴天花：塑鋁板加留維修孔。暖風機確實接至管道間，崁燈 2 顆（連工帶料）。
+6. 吊扇：客廳、主臥各 1 檯（明線安裝）。
+7. 吸頂燈：客、餐、主、次、書、廚各 1 檯（共 6 檯，業主自備）。
+*詳細規格網址：請參閱本需求書網頁`;
+
+            // Clipboard fallback
+            const tempInput = document.createElement("textarea");
+            tempInput.value = textToCopy;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand("copy");
+            document.body.removeChild(tempInput);
+
+            // Show Toast
+            const toast = document.getElementById('toast');
+            toast.classList.remove('opacity-0');
+            toast.classList.add('opacity-100');
+            setTimeout(() => {
+                toast.classList.remove('opacity-100');
+                toast.classList.add('opacity-0');
+            }, 2500);
+        }
+    </script>
+</body>
+</html>
